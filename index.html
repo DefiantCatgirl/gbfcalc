@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Granblue Fantasy damage calculator</title>
+    <link rel="stylesheet" href="./material.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+
+<div class="container">
+<div class="main-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Granblue Fantasy damage calculator</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        Simple formulas calculation script
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col">
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="u" tabindex="1">
+                    <label class="mdl-textfield__label" for="u">U (magna)</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="up" tabindex="5">
+                    +
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="um" tabindex="6">
+                    -
+                </button>
+            </div>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="x" tabindex="2">
+                    <label class="mdl-textfield__label" for="x">X (normal)</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="xp" tabindex="7">
+                    +
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="xm" tabindex="8">
+                    -
+                </button>
+            </div>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="y" tabindex="3">
+                    <label class="mdl-textfield__label" for="y">Y (bahamut)</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="yp" tabindex="9">
+                    +
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="ym" tabindex="10">
+                    -
+                </button>
+            </div>
+            <div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="z" tabindex="4">
+                    <label class="mdl-textfield__label" for="z">Z (unknown)</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="zp" tabindex="11">
+                    +
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="zm" tabindex="12">
+                    -
+                </button>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--8-col">
+            <table class="mdl-data-table mdl-shadow--2dp">
+                <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Formula</th>
+                    <th>Value</th>
+                    <th class="mdl-data-table__cell--non-numeric">+0.01</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Magna x2</td>
+                    <td id="f1" class="res">...</td>
+                    <td class="mdl-data-table__cell--non-numeric rec" id="r1"><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Magna + Elem</td>
+                    <td id="f2" class="res">...</td>
+                    <td class="mdl-data-table__cell--non-numeric rec" id="r2"><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Magna + Primal</td>
+                    <td id="f3" class="res">...</td>
+                    <td class="mdl-data-table__cell--non-numeric rec" id="r3"><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Elem + Elem</td>
+                    <td id="f4" class="res">...</td>
+                    <td class="mdl-data-table__cell--non-numeric rec" id="r4"><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">Elem + Primal</td>
+                    <td id="f5" class="res">...</td>
+                    <td class="mdl-data-table__cell--non-numeric rec" id="r5"><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<script src="./material.min.js"></script>
+<script type='text/javascript' src='scripts.js'></script>
+</body>
+</html>
